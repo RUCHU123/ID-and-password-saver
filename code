@@ -1,0 +1,65 @@
+from tkinter import Tk,Text,StringVar
+import tkinter as tk
+r = Tk()
+r.geometry("300x200")
+
+#tk.Label(r,text="ID's Password Saver ",fg='Red',font=("Helvetica", 16),justify=CENTER)
+
+
+def show_entry_fields():#function for show data
+    input1=("Website: %s\n Username: %s \n Password: %s \n" % (e1.get(), e2.get(),e3.get()))
+    print("Website name: %s\n username: %s \n password: %s" % (e1.get(), e2.get(),e3.get()))
+    create_file(input1)#create file function call
+    
+def create_file(input1):#function for creating new text file
+    val=input1
+    str='********************************************* \n'
+    file1=open("output.txt","a")
+    file1.write(str)
+    file1.writelines(val)
+    
+    tk.Label(r,text="Sucessfully Entered ",fg='Green',font=("Helvetica", 16)).grid(row=6, 
+                                    column=1, 
+                                    sticky=tk.W, 
+                                    )
+    
+     #file1.close()
+     
+photo = tk.PhotoImage(file = "\\Users\\.spyder-py3\\sav.gif")
+label = tk.Label(r,image = photo,height=50,width=50,justify='left',wraplength=500).grid(row=0,column=0)
+tk.Label(r,text="ID And Password Saver",fg='Red',font=("Helvetica", 16)).grid(row=0, 
+                                    column=1, 
+                                    sticky=tk.W, 
+                                    )
+tk.Label(r,text="Website").grid(row=1)
+tk.Label(r, 
+         text="Username").grid(row=2)
+tk.Label(r, 
+         text="Password").grid(row=3)
+
+e1 = tk.Entry(r)
+e2 = tk.Entry(r)
+e3= tk.Entry(r)
+
+e1.grid(row=1, column=1)
+e2.grid(row=2, column=1)
+e3.grid(row=3, column=1)
+
+
+tk.Button(r,   
+          text='Quit', 
+          command=r.quit).grid(row=5, 
+                                    column=0, 
+                                    sticky=tk.W, 
+                                    pady=4)
+tk.Button(r, 
+          text='Save', command=show_entry_fields).grid(row=5, 
+                                                       column=1, 
+                                                       sticky=tk.W, 
+                                                       pady=4)
+
+
+
+
+
+tk.mainloop()
